@@ -1,0 +1,21 @@
+version: "3.4"
+
+services:
+  xaler-ui-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile_dev
+    container_name: xaler-ui-dev
+    tty: true
+    restart: on-failure
+    environment:
+      HOST: 0.0.0.0
+    volumes:
+      - .:/opt/ui
+    ports:
+      - 3000:8080
+
+networks:
+  default:
+    external:
+      name: xaler-net

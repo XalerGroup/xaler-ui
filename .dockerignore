@@ -1,2 +1,5 @@
 node_modules/
 .idea/
+docker-compose-dev.yaml
+Dockerfile_dev
+Makefile

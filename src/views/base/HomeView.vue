@@ -1,13 +1,18 @@
 <template>
   <div class="home">
-    <h1>Home page</h1>
+    <BaseHeader />
   </div>
 </template>
 
 <script>
+import BaseHeader from '@/components/base/BaseHeader.vue';
+// import Preloader from '@/components/Preloader.vue';
+
 export default {
   name: 'Home',
   components: {
+    BaseHeader,
+    // Preloader,
   },
 };
 </script>

@@ -1,18 +1,18 @@
-FROM        node:latest as develop
+FROM        node:14-alpine as build
+WORKDIR     /app
+ENV         PATH /app/node_modules/.bin:$PATH
+COPY        package.json /app/package.json
+RUN         npm install --silent
+RUN         npm install @vue/cli@3.7.0 -g
+COPY        . /app
+RUN         npm run build
 
-WORKDIR     /opt/ui
+# production environment
+FROM        nginx:stable-alpine
+COPY        --from=build /app/dist /usr/share/nginx/html
 
-ADD         package.json ./package.json
-ADD         yarn.lock ./yarn.lock
+RUN         rm /etc/nginx/conf.d/default.conf
+COPY        configs/xaler.nginx /etc/nginx/conf.d/default.conf
 
-ENV         NODE_PATH=./node_modules
-ENV         PATH=$PATH:/node_modules/.bin
-RUN         yarn install
-
-COPY        . /opt/ui
-
-EXPOSE      3000:8080
-
-ENTRYPOINT  ["/bin/bash", "/opt/ui/run.sh"]
-
-CMD         ["serve"]
+EXPOSE      80
+CMD         ["nginx", "-g", "daemon off;"]
