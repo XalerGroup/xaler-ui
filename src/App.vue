@@ -8,12 +8,14 @@
 
 <script>
 import BaseLayout from '@/layouts/BaseLayout.vue';
+import CabinetLayout from '@/layouts/CabinetLayout.vue';
 import AdminLayout from '@/layouts/AdminLayout.vue';
 
 export default {
   name: 'App',
   components: {
     BaseLayout,
+    CabinetLayout,
     AdminLayout,
   },
   methods: {

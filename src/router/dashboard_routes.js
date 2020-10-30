@@ -1,14 +1,16 @@
 const METADATA = {
-  layout: 'dashboard',
+  layout: 'cabinet',
   isAuthenticated: true,
 };
 const DashboardRoute = [
   {
     path: '/dashboard',
+    component: () => import('../views/dashboard/DashboardView.vue'),
     children: [
       {
         path: '',
         name: 'dashboard',
+        component: () => import('../views/dashboard/DashboardView.vue'),
         meta: METADATA,
       },
     ],

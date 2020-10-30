@@ -15,7 +15,6 @@
           </ul>
         </div>
       </nav>
-
       <ul class="sidenav right" id="mobile-demo">
         <li><a href="sass.html">Sass</a></li>
         <li><a href="badges.html">Components</a></li>
